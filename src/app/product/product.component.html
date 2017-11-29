@@ -1,0 +1,28 @@
+<h4 class="page-header">Products</h4>
+
+<!-- *ngIfaddedProduct icinde bir deger oldugu surece goster -->
+<div *ngIf="addedProduct" class="alert alert-success">
+  {{addedProduct}} karta eklendi.
+</div>
+
+
+<div>
+      <!-- burada liste icindeki tum urun kayiltlari bir li elemti icine aliyoruz !-->
+    <!-- listedeki tum kayi sayisi kadar donmemiz lazim, bunun icin *ngFor komutu kullanilir.!-->
+    <!-- Ayni c# daki foreach gibi dusun. products bir liste, product da o an islem yapilmakta olan product sinifinin kaydi !-->
+    <!-- let ise bu islemin sadece bu scopeda calisacagini belirtmek icin  !-->
+  
+<ul class="list-group">
+  <li *ngFor="let mproduct of products" class="list-group-item" >
+    <!-- sepete ürün eklemek icin sag tarafa bir buton ve tiklandiginda 
+    belirtilen metodu calistir. parametre olarak mproduct gönder-->
+    <button (click)="addToCart(mproduct)" class="btn btn-xs btn-primary pull-right">
+    <i class="glyphicon glyphicon-plus"></i>
+      Add to Cart  
+    </button>    
+    <h5><strong>{{mproduct.productName}}</strong></h5> 
+    <p>{{mproduct.quantityPerUnit}}</p>
+    <h6>{{mproduct.unitPrice}}</h6>
+    </li> 
+</ul>
+</div>
